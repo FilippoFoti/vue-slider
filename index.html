@@ -12,7 +12,7 @@
 <body>
 
     <div id="app">
-
+        
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
 
@@ -20,23 +20,20 @@
                     <img :src="slides[curImg].image" :alt="slides[curImg].title" />
                     <div class="text">
                         <h3>{{slides[curImg].title}}</h3>
-                        <p>
-                            {{slides[curImg].text}}
-                        </p>
+                        <p>{{slides[curImg].text}}</p>
                     </div>
                 </div>
 
                 <div class="thumbs">
                     <div class="prev" @click="showPrev"></div>
                     <div class="next" @click="showNext"></div>
-                    <div class="thumb" :class="index === curImg ? 'active' : ''" v-for="(item, index) in slides">
+                    <div class="thumb" :class="index === curImg ? 'active' : ''" v-for="(item, index) in slides" @click="clickImg(index)">
                         <img :src="slides[index].image" :alt="slides[index].title" />
                     </div>
                 </div>
 
             </div>
         </div>
-
     </div>
 
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>

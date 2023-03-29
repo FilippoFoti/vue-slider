@@ -45,11 +45,13 @@ createApp({
             this.startAutoScroll()
         },
         showPrev() {
+            clearInterval(this.interval)
             if (this.curImg > 0) {
                 this.curImg--;
             } else {
                 this.curImg = this.slides.length - 1;
             }
+            this.startAutoScroll()
         },
         startAutoScroll() {
             this.interval = setInterval(this.showNext, this.time);
@@ -57,5 +59,11 @@ createApp({
         blockAutoScroll() {
             clearInterval(this.interval)
         },
+        clickImg(item){
+            clearInterval(this.interval)
+            this.blockAutoScroll()
+            this.curImg = item
+            this.startAutoScroll()
+        }
     },
 }).mount("#app");
